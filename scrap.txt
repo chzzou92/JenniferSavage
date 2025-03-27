@@ -1,0 +1,75 @@
+// pages/index.tsx
+"use client";
+import { FaInstagram, FaFacebook, FaYoutube, FaLinkedin } from "react-icons/fa";
+import HorizontalLine from "../components/HorizontalLine";
+import NavLine from "../components/NavLine";
+import "./globals.css";
+
+const Home = () => {
+  return (
+    <div className="flex h-screen w-full bg-[#181818] text-white">
+      {/* Left Panel */}
+      <div className="flex-[2] flex flex-col justify-center px-10 py-4 relative">
+        <div className="fixed top-0 w-full bg-[#181818] z-10">
+          <nav className="flex justify-evenly gap-[400px] p-4 text-sm">
+            <a href="#" className="text-red opacity-70 hover:opacity-100">
+              Press
+            </a>
+            <a href="#" className="text-white opacity-70 hover:opacity-100">
+              Bio
+            </a>
+            <a href="#" className="text-white opacity-70 hover:opacity-100">
+              Photos
+            </a>
+            <a href="#" className="text-white opacity-70 hover:opacity-100">
+              Videos
+            </a>
+          </nav>
+          <NavLine />
+        </div>
+
+        <div className="mt-[150px]">
+          <h1 className="text-[130px] font-bold leading-[1.2] mb-5">
+            Jennifer
+          </h1>
+          <h1 className="text-[130px] font-bold leading-[1.2]">Savage</h1>
+          <div className="my-5">
+            <HorizontalLine />
+          </div>
+          <div className="mt-4">
+            <a
+              href="#"
+              className="text-white opacity-90 hover:opacity-100 inline-flex items-center gap-2"
+            >
+              Learn More <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Right Panel */}
+        <div className="flex-1 flex justify-center items-center">
+          <img
+            src="/assets/JenTransparent.png"
+            alt="Jennifer Savage"
+            width={500}
+            height={500}
+            className="object-contain"
+          />
+        </div>
+      </div>
+
+      <div className="absolute bottom-5 left-10 flex justify-between w-[calc(100%-80px)]">
+        <div className="flex gap-4">
+          <FaInstagram className="hover:text-[#E1306C]" />
+          <FaFacebook className="hover:text-[#1877F2]" />
+          <FaYoutube className="hover:text-[#FF0000]" />
+          <FaLinkedin className="hover:text-[#0A66C2]" />
+        </div>
+        <span className="opacity-80">chzzou92@gmail.com</span>
+      </div>
+      <span className="absolute bottom-0 right-10 opacity-80">2025</span>
+    </div>
+  );
+};
+
+export default Home;
