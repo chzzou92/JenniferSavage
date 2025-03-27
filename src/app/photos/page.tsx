@@ -6,7 +6,19 @@ import NavLine from "../../components/NavLine";
 import "../globals.css";
 import HorizontalLine2 from "@/components/HorizontalLine2";
 
-const locations = [
+// Define the type for a location object
+type Location = {
+  name: string;
+  src: string;
+  date: string;
+  Top: string;
+  Orchestra: string;
+  Conductor: string;
+  Venue: string;
+  ProgramRepertoire: string;
+};
+
+const locations: Location[] = [
   {
     name: "Guayaquil Philharmonic",
     src: "/assets/DSC07113.png",
@@ -55,7 +67,7 @@ const Home = () => {
   const [selectedLocation, setSelectedLocation] = useState(locations[0]);
   const [fade, setFade] = useState(false);
 
-  const handleHover = (location) => {
+  const handleHover = (location: Location) => {
     setFade(true); // Start fade-out
     setTimeout(() => {
       setHoveredImage(location.src); // Change image after fade-out
