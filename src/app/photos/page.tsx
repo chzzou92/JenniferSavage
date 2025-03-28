@@ -5,6 +5,8 @@ import Link from "next/link";
 import NavLine from "../../components/NavLine";
 import "../globals.css";
 import HorizontalLine2 from "@/components/HorizontalLine2";
+import { FaInstagram, FaFacebook, FaYoutube, FaLinkedin } from "react-icons/fa";
+import { RiFolderMusicFill } from "react-icons/ri";
 
 // Define the type for a location object
 type Location = {
@@ -134,12 +136,45 @@ const Home = () => {
                 width={1920} // Set the image's natural width
                 height={500} // Set the image's natural height
                 className="object-cover w-full transition-all duration-300 px-4 rounded-lg"
+                priority
               />
-              <div className="">
-                <p>Orchestra: {selectedLocation.Orchestra}</p>
-                <p>Conductor: {selectedLocation.Conductor}</p>
-                <p>Venue: {selectedLocation.Venue}</p>
-                <p>Program Repertoire: {selectedLocation.ProgramRepertoire}</p>
+              <div className="pt-4 px-4">
+                <div className="flex">
+                  <h1
+                    className="font-bold mr-2"
+                    style={{ fontFamily: "HelveticaNeueMedium" }}
+                  >
+                    Orchestra:
+                  </h1>
+                  <p>{selectedLocation.Orchestra}</p>
+                </div>
+                <div className="flex">
+                  <h1
+                    className="font-bold mr-2"
+                    style={{ fontFamily: "HelveticaNeueMedium" }}
+                  >
+                    Conductor:
+                  </h1>
+                  <p>{selectedLocation.Conductor}</p>
+                </div>
+                <div className="flex">
+                  <h1
+                    className="font-bold mr-2"
+                    style={{ fontFamily: "HelveticaNeueMedium" }}
+                  >
+                    Venue:
+                  </h1>
+                  <p>{selectedLocation.Venue}</p>
+                </div>
+                <div className="flex">
+                  <h1
+                    className="font-bold mr-2"
+                    style={{ fontFamily: "HelveticaNeueMedium" }}
+                  >
+                    Program Repertoire:
+                  </h1>
+                  <p>{selectedLocation.ProgramRepertoire}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -158,7 +193,17 @@ const Home = () => {
           ))}
         </div>
       </div>
+           {/* Footer */}
+      <div className="absolute bottom-5 left-10 flex justify-between w-[calc(100%-80px)]">
+        <div className="flex gap-4">
+
+        </div>
+        <span className="opacity-80">jensavagepiano@gmail.com</span>
+      </div>
+      <span className="absolute bottom-0 right-10 opacity-80">2025</span>
     </div>
+
+    
   );
 };
 

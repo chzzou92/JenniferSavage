@@ -1,10 +1,11 @@
 "use client";
 import Image from "next/image";
-import { FaInstagram, FaFacebook, FaYoutube, FaLinkedin } from "react-icons/fa";
 import HorizontalLine from "../../components/HorizontalLine";
 import NavLine from "../../components/NavLine";
 import "../globals.css";
 import Link from "next/link";
+import { FaInstagram, FaFacebook, FaYoutube, FaLinkedin } from "react-icons/fa";
+import { RiFolderMusicFill } from "react-icons/ri";
 
 const Home = () => {
   return (
@@ -35,21 +36,27 @@ const Home = () => {
       </div>
       {/* Body */}
       <div className="flex flex-row h-screen w-full pt-10">
-        <div className="w-2/5 flex-row items-center justify-start flex-1 pl-2 pt-10 space-y-8">
+        <div className="w-2/5 flex-row items-center justify-start flex-1 pl-5 pt-10 space-y-8">
           <p>
-            Jennifer Savage, is a pianist, professional accompanist and
-            collaborator based in New York and the DC area, regularly performing
-            at Carnegie Weill recital hall, collaborating with the New York
-            Chamber Players orchestra, Orchestra Manhattan, as well as Program
-            Coordinator and Administrator Assistant at the Summit Music
-            Festival. She received her Master Manhattan School of Music, New
-            York, studying piano performance with Arkady Aronov and Efrem
-            Briskin under the Elva van Gelder Memorial and Constance Keene piano
-            scholarship, previously studying at the MSM Precollege with Dr. Anna
-            Ouspenskaya at the Levine School of Music. She is also technical
-            director and producer, Broadcast Host, and Script Writer, and social
-            media manager for Virtual Concert Halls (VCHs) produced live
-            programs such as the Sound Espressivo International Competition.
+            <span
+              className="font-bold inline"
+              style={{ fontFamily: "HelveticaNeueMedium" }}
+            >
+              Jennifer Savage
+            </span>
+            , is a pianist, professional accompanist and collaborator based in
+            New York and the DC area, regularly performing at Carnegie Weill
+            recital hall, collaborating with the New York Chamber Players
+            orchestra, Orchestra Manhattan, as well as Program Coordinator and
+            Administrator Assistant at the Summit Music Festival. She received
+            her Master Manhattan School of Music, New York, studying piano
+            performance with Arkady Aronov and Efrem Briskin under the Elva van
+            Gelder Memorial and Constance Keene piano scholarship, previously
+            studying at the MSM Precollege with Dr. Anna Ouspenskaya at the
+            Levine School of Music. She is also technical director and producer,
+            Broadcast Host, and Script Writer, and social media manager for
+            Virtual Concert Halls (VCHs) produced live programs such as the
+            Sound Espressivo International Competition.
           </p>
           <p>
             An avid performer, Jennifer has appeared as a soloist with the Lviv
@@ -91,6 +98,48 @@ const Home = () => {
           />
         </div>
       </div>
+      {/* Footer */}
+      <div className="absolute bottom-5 left-10 flex justify-between w-[calc(100%-80px)]">
+        <div className="flex gap-4">
+          <a
+            href="https://www.instagram.com/realjennifersavage/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram className="hover:text-[#E1306C]" />
+          </a>
+          {/* <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebook className="hover:text-[#1877F2]" />
+          </a> */}
+          <a
+            href="https://www.youtube.com/@JenniferSavagePiano"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaYoutube className="hover:text-[#FF0000]" />
+          </a>
+          {/* <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin className="hover:text-[#0A66C2]" />
+          </a> */}
+          <a
+            href="https://www.priceattractions.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <RiFolderMusicFill className="hover:text-[#E1306C]" />
+          </a>
+        </div>
+        <span className="opacity-80">jensavagepiano@gmail.com</span>
+      </div>
+      <span className="absolute bottom-0 right-10 opacity-80">2025</span>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { FaInstagram, FaFacebook, FaYoutube, FaLinkedin } from "react-icons/fa";
+import { RiFolderMusicFill } from "react-icons/ri";
 import HorizontalLine from "../../components/HorizontalLine";
 import NavLine from "../../components/NavLine";
 import "../globals.css";
@@ -107,8 +108,16 @@ const Home = () => {
       className="relative w-[400px] h-[600px] rounded-lg cursor-pointer overflow-hidden group"
       onClick={() => {
         window.open("https://www.instagram.com/p/DDw5Or3tAxT/", "_blank");
+        setIsPlaying(!isPlaying);
       }}
     >
+      {!isPlaying && (
+        <img
+          src="/assets/icons8-play-button-90.png"
+          alt="Play Button"
+          className="absolute inset-0 m-auto w-20 h-20 z-10 center cursor-pointer"
+        />
+      )}
       <a
         href="https://www.instagram.com/p/DDw5Or3tAxT/"
         target="_blank"
@@ -118,7 +127,7 @@ const Home = () => {
         Lviv Philharmonic Interview
       </a>
       <img
-        src="/assets/470934310_509931904730587_2851978313145844502_n.jpg"
+        src="/assets/470945759_918957847005711_1795247021862034674_n.jpg"
         className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
         alt="Lviv Philharmonic Interview"
       />
@@ -128,6 +137,7 @@ const Home = () => {
       key="three"
       className="relative w-[400px] h-[600px] rounded-lg cursor-pointer overflow-hidden group"
       onClick={() => {
+        setIsPlaying(!isPlaying);
         const video = document.getElementById("pressVideo") as HTMLVideoElement;
         if (video.paused) {
           video.play();
@@ -136,6 +146,13 @@ const Home = () => {
         }
       }}
     >
+      {!isPlaying && (
+        <img
+          src="/assets/icons8-play-button-90.png"
+          alt="Play Button"
+          className="absolute inset-0 m-auto w-20 h-20 z-10 center cursor-pointer"
+        />
+      )}
       <video
         id="pressVideo"
         src="/assets/1_5131944477962798510.mp4"
@@ -148,6 +165,7 @@ const Home = () => {
       className="relative w-[400px] h-[600px] rounded-lg cursor-pointer overflow-hidden group"
       onClick={() => {
         const video = document.getElementById("pressVideo") as HTMLVideoElement;
+        setIsPlaying(!isPlaying);
         if (video.paused) {
           video.play();
         } else {
@@ -155,6 +173,13 @@ const Home = () => {
         }
       }}
     >
+      {!isPlaying && (
+        <img
+          src="/assets/icons8-play-button-90.png"
+          alt="Play Button"
+          className="absolute inset-0 m-auto w-20 h-20 z-10 center cursor-pointer"
+        />
+      )}
       <video
         id="pressVideo"
         src="/assets/1_5132245383371556574.mp4"
@@ -167,6 +192,7 @@ const Home = () => {
       className="relative w-[400px] h-[600px] rounded-lg cursor-pointer overflow-hidden group"
       onClick={() => {
         const video = document.getElementById("pressVideo") as HTMLVideoElement;
+        setIsPlaying(!isPlaying);
         if (video.paused) {
           video.play();
         } else {
@@ -174,6 +200,13 @@ const Home = () => {
         }
       }}
     >
+      {!isPlaying && (
+        <img
+          src="/assets/icons8-play-button-90.png"
+          alt="Play Button"
+          className="absolute inset-0 m-auto w-20 h-20 z-10 center cursor-pointer"
+        />
+      )}
       <video
         id="pressVideo"
         src="/assets/1_5132222688764363909.mp4"
@@ -183,50 +216,147 @@ const Home = () => {
     </div>,
     <div
       key="five"
-      className="relative w-[1000px] h-[600px] rounded-lg overflow-hidden group"
+      className="relative w-[1000px] h-[600px] rounded-lg overflow-hidden group cursor-pointer"
       onClick={() => {
-        window.open("https://youtu.be/p4DFo1XkQwc", "_blank");
+        if (!isPlaying) {
+          setIsPlaying(true);
+        }
       }}
     >
-      <h1 className="absolute top-4 left-4 text-xl font-bold text-white z-10">
-        Gershwin - Piano Concerto in F Mvt I. - Jennifer Savage
-      </h1>
-      <img
-        src="/assets/Screenshot 2025-03-27 at 12.18.24 PM.png"
-        className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
-        alt="Lviv Philharmonic Interview"
-      />
+      {isPlaying ? (
+        // Embedded YouTube iframe when playing
+        <iframe
+          className="w-full h-full"
+          src="https://www.youtube.com/embed/p4DFo1XkQwc?autoplay=1"
+          title="Gershwin - Piano Concerto in F Mvt I. - Jennifer Savage"
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+        ></iframe>
+      ) : (
+        <>
+          {/* Play Button */}
+          <img
+            src="/assets/icons8-play-button-90.png"
+            alt="Play Button"
+            className="absolute inset-0 m-auto w-20 h-20 z-10 cursor-pointer"
+          />
+          {/* Title */}
+          <h1 className="absolute top-4 left-4 text-xl font-bold text-white z-10">
+            Gershwin - Piano Concerto in F Mvt I. - Jennifer Savage
+          </h1>
+          {/* Thumbnail Image */}
+          <img
+            src="/assets/Screenshot 2025-03-27 at 12.18.24 PM.png"
+            className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+            alt="Lviv Philharmonic Interview"
+          />
+        </>
+      )}
     </div>,
     <div
       key="six"
-      className="relative w-[1000px] h-[600px] rounded-lg overflow-hidden group"
+      className="relative w-[1000px] h-[600px] rounded-lg overflow-hidden group cursor-pointer"
       onClick={() => {
-        window.open("https://www.youtube.com/watch?v=hfEfoaDK34A", "_blank");
+        if (!isPlaying) {
+          setIsPlaying(true);
+        }
       }}
     >
-      <h1 className="absolute top-4 left-4 text-xl font-bold text-white z-10">
-        Gershwin - Piano Concerto in F Mvt II. - Jennifer Savage
-      </h1>
-      <img
-        src="/assets/Screenshot 2025-03-27 at 12.19.23 PM.png"
-        className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
-        alt="Lviv Philharmonic Interview"
-      />
+      {isPlaying ? (
+        // Embedded YouTube iframe when playing
+        <iframe
+          className="w-full h-full"
+          src="https://www.youtube.com/embed/hfEfoaDK34A?autoplay=1"
+          title="Gershwin - Piano Concerto in F Mvt II. - Jennifer Savage"
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+        ></iframe>
+      ) : (
+        <>
+          {/* Play Button */}
+          <img
+            src="/assets/icons8-play-button-90.png"
+            alt="Play Button"
+            className="absolute inset-0 m-auto w-20 h-20 z-10 cursor-pointer"
+          />
+          {/* Title */}
+          <h1 className="absolute top-4 left-4 text-xl font-bold text-white z-10">
+            Gershwin - Piano Concerto in F Mvt II. - Jennifer Savage
+          </h1>
+          {/* Thumbnail Image */}
+          <img
+            src="/assets/Screenshot 2025-03-27 at 12.19.23 PM.png"
+            className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+            alt="Lviv Philharmonic Interview"
+          />
+        </>
+      )}
     </div>,
     <div
       key="seven"
-      className="relative w-[1000px] h-[600px] rounded-lg overflow-hidden group"
+      className="relative w-[1000px] h-[600px] rounded-lg overflow-hidden group cursor-pointer"
       onClick={() => {
-        window.open("https://youtu.be/8pv5CmpmCpI", "_blank");
+        if (!isPlaying) {
+          setIsPlaying(true);
+        }
       }}
     >
-      <h1 className="absolute top-4 left-4 text-xl font-bold text-white z-10">
-        Gershwin - Piano Concerto in F Mvt III. - Jennifer Savage
-      </h1>
+      {isPlaying ? (
+        // Embedded YouTube iframe when playing
+        <iframe
+          className="w-full h-full"
+          src="https://www.youtube.com/embed/8pv5CmpmCpI?autoplay=1"
+          title="Gershwin - Piano Concerto in F Mvt III. - Jennifer Savage"
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+        ></iframe>
+      ) : (
+        <>
+          {/* Play Button */}
+          <img
+            src="/assets/icons8-play-button-90.png"
+            alt="Play Button"
+            className="absolute inset-0 m-auto w-20 h-20 z-10 cursor-pointer"
+          />
+          {/* Title */}
+          <h1 className="absolute top-4 left-4 text-xl font-bold text-white z-10">
+            Gershwin - Piano Concerto in F Mvt III. - Jennifer Savage
+          </h1>
+          {/* Thumbnail Image */}
+          <img
+            src="/assets/Screenshot 2025-03-27 at 12.20.19 PM.png"
+            className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+            alt="Lviv Philharmonic Interview"
+          />
+        </>
+      )}
+    </div>,
+    <div
+      key="eight"
+      className="relative w-[1000px] h-[600px] rounded-lg cursor-pointer overflow-hidden group"
+      onClick={() => {
+        setIsPlaying(!isPlaying);
+        window.open(
+          "https://www.instagram.com/p/DD1qssHtDqu/?img_index=1",
+          "_blank"
+        );
+      }}
+    >
+      <a
+        href="https://www.instagram.com/p/DD1qssHtDqu/?img_index=1"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute bottom-4 left-4 text-xl font-bold text-white z-10 hover:opacity-80"
+      >
+        Lviv Philharmonic Photos
+      </a>
       <img
-        src="/assets/Screenshot 2025-03-27 at 12.20.19 PM.png"
+        src="/assets/470934310_509931904730587_2851978313145844502_n.jpg"
         className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
-        alt="Lviv Philharmonic Interview"
+        alt="Lviv Philharmonic Photos"
       />
     </div>,
   ];
@@ -269,7 +399,10 @@ const Home = () => {
               {content.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => handleContentSwitch(index)}
+                  onClick={() => {
+                    handleContentSwitch(index);
+                    setIsPlaying(false);
+                  }}
                   className={`w-4 h-4 rounded-full ${
                     selectedIndex === index ? "bg-white" : "bg-gray-800"
                   }`}
@@ -290,13 +423,13 @@ const Home = () => {
           >
             <FaInstagram className="hover:text-[#E1306C]" />
           </a>
-          <a
+          {/* <a
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaFacebook className="hover:text-[#1877F2]" />
-          </a>
+          </a> */}
           <a
             href="https://www.youtube.com/@JenniferSavagePiano"
             target="_blank"
@@ -304,12 +437,19 @@ const Home = () => {
           >
             <FaYoutube className="hover:text-[#FF0000]" />
           </a>
-          <a
+          {/* <a
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaLinkedin className="hover:text-[#0A66C2]" />
+          </a> */}
+          <a
+            href="https://www.priceattractions.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <RiFolderMusicFill className="hover:text-[#E1306C]" />
           </a>
         </div>
         <span className="opacity-80">jensavagepiano@gmail.com</span>
