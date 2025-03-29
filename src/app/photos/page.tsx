@@ -65,17 +65,16 @@ const locations: Location[] = [
 ];
 
 const Home = () => {
-  const [hoveredImage, setHoveredImage] = useState(locations[0].src);
   const [selectedLocation, setSelectedLocation] = useState(locations[0]);
   const [fade, setFade] = useState(false);
 
+  // Handle hover and update selected location
   const handleHover = (location: Location) => {
-    setFade(true); // Start fade-out
+    setSelectedLocation(location);
+    setFade(true);
     setTimeout(() => {
-      setHoveredImage(location.src); // Change image after fade-out
-      setSelectedLocation(location);
       setFade(false); // Start fade-in
-    }, 150); // Adjust delay to match transition duration
+    }, 150);
   };
 
   return (
@@ -108,7 +107,7 @@ const Home = () => {
       {/* Body */}
       <div className="flex flex-row h-screen w-full pt-10">
         <div className="w-3/5 flex-col items-center justify-end flex-1 pl-2">
-          <div className="relative w-fit">
+          <div className="relative w-full h-full">
             <div className="w-full relative text-white text-sm px-4 mt-10 my-5">
               {/* Top Section: Date and More Info Link */}
               <div className="flex justify-between items-center">
@@ -123,60 +122,64 @@ const Home = () => {
               <HorizontalLine2 fade={fade} />
             </div>
 
-            {/* Image with Fade Effect */}
-            <div
-              className={`relative transition-opacity duration-150 ${
-                fade ? "opacity-0" : "opacity-100"
-              }`}
-            >
-              <Image
-                src={hoveredImage || ""}
-                alt="Performance Image"
-                layout="responsive"
-                width={1920} // Set the image's natural width
-                height={500} // Set the image's natural height
-                className="object-cover w-full transition-all duration-300 px-4 rounded-lg"
-                priority
-              />
-              <div className="pt-4 px-4">
-                <div className="flex">
-                  <h1
-                    className="font-bold mr-2"
-                    style={{ fontFamily: "HelveticaNeueMedium" }}
-                  >
-                    Orchestra:
-                  </h1>
-                  <p>{selectedLocation.Orchestra}</p>
-                </div>
-                <div className="flex">
-                  <h1
-                    className="font-bold mr-2"
-                    style={{ fontFamily: "HelveticaNeueMedium" }}
-                  >
-                    Conductor:
-                  </h1>
-                  <p>{selectedLocation.Conductor}</p>
-                </div>
-                <div className="flex">
-                  <h1
-                    className="font-bold mr-2"
-                    style={{ fontFamily: "HelveticaNeueMedium" }}
-                  >
-                    Venue:
-                  </h1>
-                  <p>{selectedLocation.Venue}</p>
-                </div>
-                <div className="flex">
-                  <h1
-                    className="font-bold mr-2"
-                    style={{ fontFamily: "HelveticaNeueMedium" }}
-                  >
-                    Program Repertoire:
-                  </h1>
-                  <p>{selectedLocation.ProgramRepertoire}</p>
+            {/* Render All Images on Top of Each Other */}
+            {locations.map((location) => (
+              <div
+                className="absolute w-full h-full px-4"
+                style={{
+                  display: selectedLocation === location ? "inherit" : "none",
+                }}
+                key={location.name}
+              >
+                <Image
+                  src={location.src}
+                  alt="Performance Image"
+                  layout="responsive"
+                  width={1920}
+                  height={500}
+                  className={` top-0 left-0 w-full h-full object-fill rounded-lg transition-opacity duration-300 `}
+                />
+
+                <div className=" pt-4 px-4 z-10 bg-[#181818] bg-opacity-70 rounded-b-lg">
+                  <div className="flex">
+                    <h1
+                      className="font-bold mr-2"
+                      style={{ fontFamily: "HelveticaNeueMedium" }}
+                    >
+                      Orchestra:
+                    </h1>
+                    <p>{selectedLocation.Orchestra}</p>
+                  </div>
+                  <div className="flex">
+                    <h1
+                      className="font-bold mr-2"
+                      style={{ fontFamily: "HelveticaNeueMedium" }}
+                    >
+                      Conductor:
+                    </h1>
+                    <p>{selectedLocation.Conductor}</p>
+                  </div>
+                  <div className="flex">
+                    <h1
+                      className="font-bold mr-2"
+                      style={{ fontFamily: "HelveticaNeueMedium" }}
+                    >
+                      Venue:
+                    </h1>
+                    <p>{selectedLocation.Venue}</p>
+                  </div>
+                  <div className="flex">
+                    <h1
+                      className="font-bold mr-2"
+                      style={{ fontFamily: "HelveticaNeueMedium" }}
+                    >
+                      Program Repertoire:
+                    </h1>
+                    <p>{selectedLocation.ProgramRepertoire}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -193,17 +196,14 @@ const Home = () => {
           ))}
         </div>
       </div>
-           {/* Footer */}
-      <div className="absolute bottom-5 left-10 flex justify-between w-[calc(100%-80px)]">
-        <div className="flex gap-4">
 
-        </div>
+      {/* Footer */}
+      <div className="absolute bottom-5 left-10 flex justify-between w-[calc(100%-80px)]">
+        <div className="flex gap-4"></div>
         <span className="opacity-80">jensavagepiano@gmail.com</span>
       </div>
       <span className="absolute bottom-0 right-10 opacity-80">2025</span>
     </div>
-
-    
   );
 };
 
