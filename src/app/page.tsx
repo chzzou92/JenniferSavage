@@ -11,8 +11,8 @@ const Home = () => {
     <div className="relative h-screen w-screen bg-[#181818] text-white overflow-hidden flex flex-col">
       {/* Navbar */}
       <div className="fixed top-0 w-full bg-[#181818] z-20 flex flex-col items-center h-8">
-        <nav className="flex justify-evenly gap-[300px] items-center w-full h-full text-sm">
-          <a href="/page" className="text-white opacity-70 hover:opacity-100">
+        <nav className="flex justify-evenly gap-[300px] items-center w-full h-full mt-2 text-sm">
+          <a href="/" className="text-white opacity-70 hover:opacity-100">
             [Home]
           </a>
           <Link href="/bio" className="text-white opacity-70 hover:opacity-100">
@@ -63,7 +63,7 @@ const Home = () => {
               <HorizontalLine />
             </div>
             <a
-              href="/press"
+              href="/bio"
               className="text-white opacity-90 hover:opacity-100 inline-flex items-center gap-2"
             >
               Learn More <span>→</span>
@@ -73,7 +73,7 @@ const Home = () => {
       </div>
 
       {/* Footer */}
-      <div className="absolute bottom-5 left-10 flex justify-between w-[calc(100%-80px)]">
+      <div className="absolute bottom-10 left-10 flex justify-between w-[calc(100%-80px)]">
         <div className="flex gap-4">
           <a
             href="https://www.instagram.com/realjennifersavage/"

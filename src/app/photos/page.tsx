@@ -81,7 +81,7 @@ const Home = () => {
     <div className="relative h-screen w-screen bg-[#181818] text-white overflow-hidden flex flex-col">
       {/* Navbar */}
       <div className="fixed top-0 w-full bg-[#181818] z-20 flex flex-col items-center h-8">
-        <nav className="flex justify-evenly gap-[300px] items-center w-full h-full text-sm">
+        <nav className="flex justify-evenly gap-[300px] items-center w-full h-full mt-2 text-sm">
           <Link href="/" className="text-white opacity-70 hover:opacity-100">
             Home
           </Link>
