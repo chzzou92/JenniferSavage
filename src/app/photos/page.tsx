@@ -79,25 +79,36 @@ const Home = () => {
 
   return (
     <div className="relative h-screen w-screen bg-[#181818] text-white overflow-hidden flex flex-col">
-      {/* Navbar */}
-      <div className="fixed top-0 w-full bg-[#181818] z-20 flex flex-col items-center h-8">
-        <nav className="flex justify-evenly gap-[300px] items-center w-full h-full mt-2 text-sm">
-          <Link href="/" className="text-white opacity-70 hover:opacity-100">
+      {/* Navbar Container */}
+      <div className="fixed top-0 w-full bg-[#181818] z-20">
+        <nav
+          className="
+      flex items-center justify-evenly w-full h-full mt-2 text-sm
+      px-4           /* default: small screens */
+      sm:px-8        /* ≥640px */
+      md:px-16       /* ≥768px */
+      lg:px-24       /* ≥1024px */
+      xl:px-32       /* ≥1280px */
+      2xl:px-40      /* ≥1536px */
+
+      gap-2          /* default gap between links */
+      sm:gap-4       /* ≥640px */
+      md:gap-8       /* ≥768px */
+      lg:gap-12      /* ≥1024px */
+      xl:gap-20      /* ≥1280px */
+      2xl:gap-32     /* ≥1536px */
+    "
+        >
+          <a href="/" className="opacity-70 hover:opacity-100">
             Home
-          </Link>
-          <Link href="/bio" className="text-white opacity-70 hover:opacity-100">
+          </a>
+          <Link href="/bio" className="opacity-70 hover:opacity-100">
             Bio
           </Link>
-          <Link
-            href="/photos"
-            className="text-white opacity-70 hover:opacity-100"
-          >
+          <Link href="/photos" className="opacity-70 hover:opacity-100">
             [Photos]
           </Link>
-          <Link
-            href="/press"
-            className="text-white opacity-70 hover:opacity-100"
-          >
+          <Link href="/press" className="opacity-70 hover:opacity-100">
             Press
           </Link>
         </nav>
@@ -105,8 +116,15 @@ const Home = () => {
       </div>
 
       {/* Body */}
-      <div className="flex flex-row h-screen w-full pt-10">
-        <div className="w-3/5 flex-col items-center justify-end flex-1 pl-2">
+      <div className="flex flex-col sm:flex-row h-screen w-full pt-10">
+        <div
+          className="
+      w-full            /* full width on mobile */
+      h-[70vh]          /* take up ~70% of viewport height on mobile */
+      sm:w-3/5 sm:h-full  /* 60% width + full height ≥640px */
+      flex flex-col items-center justify-end pl-2
+    "
+        >
           <div className="relative w-full h-full">
             <div className="w-full relative text-white text-sm px-4 mt-10 my-5">
               {/* Top Section: Date and More Info Link */}
@@ -140,7 +158,16 @@ const Home = () => {
                   className={` top-0 left-0 w-full h-full object-fill rounded-lg transition-opacity duration-300 `}
                 />
 
-                <div className=" pt-4 px-4 z-10 bg-[#181818] bg-opacity-70 rounded-b-lg">
+                <div
+                  className="
+    pt-2 px-2          /* mobile: tighter padding */
+    sm:pt-4 sm:px-4    /* ≥640px: your original padding */
+    z-10 bg-[#181818] bg-opacity-70 rounded-b-lg
+
+    text-sm            /* mobile: smaller text */
+    sm:text-base       /* ≥640px: back to normal */
+  "
+                >
                   <div className="flex">
                     <h1
                       className="font-bold mr-2"
@@ -184,12 +211,28 @@ const Home = () => {
         </div>
 
         {/* Locations List */}
-        <div className="w-2/5 flex flex-col justify-start pl-4">
+        <div
+          className="
+          w-full              /* full width on mobile */
+          h-[30vh]            /* take up ~30% of viewport height on mobile */
+          sm:w-2/5 sm:h-full    /* 40% width + full height ≥640px */
+          flex flex-col justify-start pl-4 overflow-auto"
+        >
           {locations.map((location) => (
             <h1
               key={location.name}
-              className="text-[65px] font-bold transition-opacity duration-300 cursor-pointer hover:opacity-100 opacity-70"
               onMouseEnter={() => handleHover(location)}
+              onClick={() => handleHover(location)}
+              className={`
+      text-[30px] sm:text-[65px] font-bold
+      transition-opacity duration-300 cursor-pointer
+
+      /* mobile: highlight permanently if selected */
+      ${selectedLocation === location ? "opacity-100" : "opacity-70"}
+
+      /* ≥640px: always baseline 70% opacity, hover to 100% */
+      sm:opacity-70 hover:opacity-100
+    `}
             >
               {location.name}
             </h1>
@@ -200,9 +243,13 @@ const Home = () => {
       {/* Footer */}
       <div className="absolute bottom-5 left-10 flex justify-between w-[calc(100%-80px)]">
         <div className="flex gap-4"></div>
-        <span className="opacity-80">jensavagepiano@gmail.com</span>
+        <span className="sm:opacity-80 sm:text-[15px] text-[5px] opacity-0">
+          jensavagepiano@gmail.com
+        </span>
       </div>
-      <span className="absolute bottom-0 right-10 opacity-80">2025</span>
+      <span className="absolute bottom-0 right-10 sm:opacity-80 sm:text-[15px] opacity-0">
+        2025
+      </span>
     </div>
   );
 };

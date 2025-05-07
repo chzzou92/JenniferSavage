@@ -10,33 +10,84 @@ import { RiFolderMusicFill } from "react-icons/ri";
 const Home = () => {
   return (
     <div className="relative h-screen w-screen bg-[#181818] text-white overflow-hidden flex flex-col">
-      {/* Navbar */}
-      <div className="fixed top-0 w-full bg-[#181818] z-20 flex flex-col items-center h-8">
-        <nav className="flex justify-evenly gap-[300px] items-center w-full mt-2 h-full text-sm">
-          <a href="/" className="text-white opacity-70 hover:opacity-100">
+      {/* Navbar Container */}
+      <div className="fixed top-0 w-full bg-[#181818] z-20">
+        <nav
+          className="
+      flex items-center justify-evenly w-full h-full mt-2 text-sm
+      px-4           /* default: small screens */
+      sm:px-8        /* ≥640px */
+      md:px-16       /* ≥768px */
+      lg:px-24       /* ≥1024px */
+      xl:px-32       /* ≥1280px */
+      2xl:px-40      /* ≥1536px */
+
+      gap-2          /* default gap between links */
+      sm:gap-4       /* ≥640px */
+      md:gap-8       /* ≥768px */
+      lg:gap-12      /* ≥1024px */
+      xl:gap-20      /* ≥1280px */
+      2xl:gap-32     /* ≥1536px */
+    "
+        >
+          <a href="/" className="opacity-70 hover:opacity-100">
             Home
           </a>
-          <Link href="/bio" className="text-white opacity-70 hover:opacity-100">
+          <Link href="/bio" className="opacity-70 hover:opacity-100">
             [Bio]
           </Link>
-          <Link
-            href="/photos"
-            className="text-white opacity-70 hover:opacity-100"
-          >
+          <Link href="/photos" className="opacity-70 hover:opacity-100">
             Photos
           </Link>
-          <Link
-            href="/press"
-            className="text-white opacity-70 hover:opacity-100"
-          >
+          <Link href="/press" className="opacity-70 hover:opacity-100">
             Press
           </Link>
         </nav>
         <NavLine />
       </div>
+
       {/* Body */}
-      <div className="flex flex-row h-screen w-full pt-10">
-        <div className="w-2/5 flex-row items-center justify-start flex-1 pl-5 pt-10 space-y-8">
+      <div className="flex flex-col sm:flex-row h-screen w-full pt-10 pb-20 overflow-y-auto">
+        {/* 1) Heading + Image */}
+        <div className="order-1 sm:order-2 w-full sm:w-3/5 flex flex-col items-center justify-start">
+          <h1
+            className="
+        text-white
+        text-[60px] sm:text-[130px]
+        font-bold leading-tight text-center
+        opacity-0 animate-slideUp
+      "
+          >
+            <span className="block sm:inline">Jennifer</span>
+            <span className="block sm:inline">Savage</span>
+          </h1>
+
+          <Image
+            src="/assets/DSC07055-2.png"
+            alt="Bio Image"
+            width={500}
+            height={500}
+            className="
+        relative mt-4
+        w-[90vw]    /* mobile: 90% of viewport */
+        sm:w-[600px] /* ≥640px: fixed 600px */
+        h-auto object-cover rounded-lg
+      "
+          />
+        </div>
+
+        {/* 2) Bio paragraphs */}
+        <div
+          className="
+      order-2 sm:order-1
+      w-full sm:w-2/5
+      flex flex-col items-start justify-start
+      pl-5 pt-10
+      space-y-6
+      text-sm     /* mobile: smaller text */
+      sm:text-base /* ≥640px: normal text */
+    "
+        >
           <p>
             <span
               className="font-bold inline"
@@ -84,20 +135,8 @@ const Home = () => {
             Piano Concerto in F with the Lviv National Philharmonic in Ukraine.
           </p>
         </div>
-        {/* Locations List */}
-        <div className="w-3/5 flex flex-col justify-start pl-4">
-          <h1 className="text-[130px] font-bold opacity-0 animate-slideUp">
-            Jennifer Savage
-          </h1>
-          <Image
-            src="/assets/DSC07055-2.png"
-            alt="Bio Image"
-            width={500}
-            height={500}
-            className="w-[600px] h-[600px] object-cover rounded-lg"
-          />
-        </div>
       </div>
+
       {/* Footer */}
       <div className="absolute bottom-5 left-10 flex justify-between w-[calc(100%-80px)]">
         <div className="flex gap-4">
@@ -137,9 +176,13 @@ const Home = () => {
             <RiFolderMusicFill className="hover:text-[#E1306C]" />
           </a>
         </div>
-        <span className="opacity-80">jensavagepiano@gmail.com</span>
+        <span className="sm:opacity-80 opacity-0">
+          jensavagepiano@gmail.com
+        </span>
       </div>
-      <span className="absolute bottom-0 right-10 opacity-80">2025</span>
+      <span className="absolute bottom-0 right-10 sm:opacity-80 opacity-0">
+        2025
+      </span>
     </div>
   );
 };

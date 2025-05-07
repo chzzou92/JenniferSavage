@@ -105,7 +105,7 @@ const Home = () => {
     // Instagram Post
     <div
       key="two"
-      className="relative w-[400px] h-[600px] rounded-lg cursor-pointer overflow-hidden group"
+      className="relative w-[300px] sm:w-[400px] sm:h-[600px] rounded-lg cursor-pointer overflow-hidden group"
       onClick={() => {
         window.open("https://www.instagram.com/p/DDw5Or3tAxT/", "_blank");
         setIsPlaying(!isPlaying);
@@ -135,7 +135,7 @@ const Home = () => {
     // Additional content placeholders
     <div
       key="three"
-      className="relative w-[400px] h-[600px] rounded-lg cursor-pointer overflow-hidden group"
+      className="relative w-[300px] sm:w-[400px] sm:h-[600px] rounded-lg cursor-pointer overflow-hidden group"
       onClick={() => {
         setIsPlaying(!isPlaying);
         const video = document.getElementById("pressVideo") as HTMLVideoElement;
@@ -162,7 +162,7 @@ const Home = () => {
     </div>,
     <div
       key="three"
-      className="relative w-[400px] h-[600px] rounded-lg cursor-pointer overflow-hidden group"
+      className="relative w-[300px] sm:w-[400px] sm:h-[600px] rounded-lg cursor-pointer overflow-hidden group"
       onClick={() => {
         const video = document.getElementById("pressVideo") as HTMLVideoElement;
         setIsPlaying(!isPlaying);
@@ -189,7 +189,7 @@ const Home = () => {
     </div>,
     <div
       key="four"
-      className="relative w-[400px] h-[600px] rounded-lg cursor-pointer overflow-hidden group"
+      className="relative w-[300px] sm:w-[400px] sm:h-[600px] rounded-lg cursor-pointer overflow-hidden group"
       onClick={() => {
         const video = document.getElementById("pressVideo") as HTMLVideoElement;
         setIsPlaying(!isPlaying);
@@ -216,7 +216,7 @@ const Home = () => {
     </div>,
     <div
       key="five"
-      className="relative w-[1000px] h-[600px] rounded-lg overflow-hidden group cursor-pointer"
+      className="relative w-[400px] sm:w-[1000px] sm:h-[600px] rounded-lg overflow-hidden group cursor-pointer"
       onClick={() => {
         if (!isPlaying) {
           setIsPlaying(true);
@@ -226,7 +226,7 @@ const Home = () => {
       {isPlaying ? (
         // Embedded YouTube iframe when playing
         <iframe
-          className="w-full h-full"
+          className="w-[400px] h-[220px] sm:w-full sm:h-full"
           src="https://www.youtube.com/embed/p4DFo1XkQwc?autoplay=1"
           title="Gershwin - Piano Concerto in F Mvt I. - Jennifer Savage"
           frameBorder="0"
@@ -256,7 +256,7 @@ const Home = () => {
     </div>,
     <div
       key="six"
-      className="relative w-[1000px] h-[600px] rounded-lg overflow-hidden group cursor-pointer"
+      className="relative w-[400px] sm:w-[1000px] sm:h-[600px] rounded-lg overflow-hidden group cursor-pointer"
       onClick={() => {
         if (!isPlaying) {
           setIsPlaying(true);
@@ -266,7 +266,7 @@ const Home = () => {
       {isPlaying ? (
         // Embedded YouTube iframe when playing
         <iframe
-          className="w-full h-full"
+          className="w-[400px] h-[220px] sm:w-full sm:h-full"
           src="https://www.youtube.com/embed/hfEfoaDK34A?autoplay=1"
           title="Gershwin - Piano Concerto in F Mvt II. - Jennifer Savage"
           frameBorder="0"
@@ -296,7 +296,7 @@ const Home = () => {
     </div>,
     <div
       key="seven"
-      className="relative w-[1000px] h-[600px] rounded-lg overflow-hidden group cursor-pointer"
+      className="relative w-[400px] sm:w-[1000px] sm:h-[600px] rounded-lg overflow-hidden group cursor-pointer"
       onClick={() => {
         if (!isPlaying) {
           setIsPlaying(true);
@@ -306,7 +306,7 @@ const Home = () => {
       {isPlaying ? (
         // Embedded YouTube iframe when playing
         <iframe
-          className="w-full h-full"
+          className="w-[400px] h-[220px] sm:w-full sm:h-full"
           src="https://www.youtube.com/embed/8pv5CmpmCpI?autoplay=1"
           title="Gershwin - Piano Concerto in F Mvt III. - Jennifer Savage"
           frameBorder="0"
@@ -336,7 +336,7 @@ const Home = () => {
     </div>,
     <div
       key="eight"
-      className="relative w-[1000px] h-[600px] rounded-lg cursor-pointer overflow-hidden group"
+      className="relative w-[400px] sm:w-[1000px] sm:h-[600px] rounded-lg cursor-pointer overflow-hidden group"
       onClick={() => {
         setIsPlaying(!isPlaying);
         window.open(
@@ -363,25 +363,36 @@ const Home = () => {
 
   return (
     <div className="relative h-screen w-screen bg-[#181818] text-white overflow-hidden flex flex-col">
-      {/* Navbar */}
-      <div className="fixed top-0 w-full bg-[#181818] z-20 flex flex-col items-center h-8">
-        <nav className="flex justify-evenly gap-[300px] items-center w-full h-12 mt-2 text-sm">
-          <a href="/" className="text-white opacity-70 hover:opacity-100">
+      {/* Navbar Container */}
+      <div className="fixed top-0 w-full bg-[#181818] z-20">
+        <nav
+          className="
+      flex items-center justify-evenly w-full h-full mt-2 text-sm
+      px-4           /* default: small screens */
+      sm:px-8        /* ≥640px */
+      md:px-16       /* ≥768px */
+      lg:px-24       /* ≥1024px */
+      xl:px-32       /* ≥1280px */
+      2xl:px-40      /* ≥1536px */
+
+      gap-2          /* default gap between links */
+      sm:gap-4       /* ≥640px */
+      md:gap-8       /* ≥768px */
+      lg:gap-12      /* ≥1024px */
+      xl:gap-20      /* ≥1280px */
+      2xl:gap-32     /* ≥1536px */
+    "
+        >
+          <a href="/" className="opacity-70 hover:opacity-100">
             Home
           </a>
-          <Link href="/bio" className="text-white opacity-70 hover:opacity-100">
+          <Link href="/bio" className="opacity-70 hover:opacity-100">
             Bio
           </Link>
-          <Link
-            href="/photos"
-            className="text-white opacity-70 hover:opacity-100"
-          >
+          <Link href="/photos" className="opacity-70 hover:opacity-100">
             Photos
           </Link>
-          <Link
-            href="/press"
-            className="text-white opacity-70 hover:opacity-100"
-          >
+          <Link href="/press" className="opacity-70 hover:opacity-100">
             [Press]
           </Link>
         </nav>
@@ -393,28 +404,45 @@ const Home = () => {
         {/* Text Overlay (Behind Image) */}
         <div className="inset-0 flex flex-col items-center justify-center">
           <h1 className="text-white text-[100px] font-bold">Press</h1>
-          <div className="bg-[#B0AFAB] rounded-lg w-[1500px] h-[700px] flex flex-col items-center justify-center">
-            {content[selectedIndex]}
-            <div className="flex gap-4 mt-8">
-              {content.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    handleContentSwitch(index);
-                    setIsPlaying(false);
-                  }}
-                  className={`w-4 h-4 rounded-full ${
-                    selectedIndex === index ? "bg-white" : "bg-gray-800"
-                  }`}
-                />
-              ))}
+          <div
+            className="
+        bg-[#B0AFAB] rounded-lg
+        w-[120vw]    h-[73vh]    /* mobile */
+        sm:w-[1500px] sm:h-[700px] /* ≥640px */
+        flex flex-col items-center justify-center
+      "
+          >
+            <div
+              className="
+          w-[15px] h-[60vh]        /* mobile */
+          sm:w-auto   sm:h-auto      /* ≥640px */
+          flex items-center justify-center flex-col
+        "
+            >
+              {content[selectedIndex]}
+              <div className="flex gap-4 mt-8">
+                {content.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      handleContentSwitch(index);
+                      setIsPlaying(false);
+                    }}
+                    className={`
+        dot-button
+        w-4 h-4 rounded-full cursor-pointer
+        ${selectedIndex === index ? "selected bg-white" : "bg-gray-800"}
+      `}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="absolute bottom-5 left-10 flex justify-between w-[calc(100%-80px)]">
+      <div className="absolute bottom-3 left-10 flex justify-between w-[calc(100%-80px)]">
         <div className="flex gap-4">
           <a
             href="https://www.instagram.com/realjennifersavage/"
@@ -452,9 +480,13 @@ const Home = () => {
             <RiFolderMusicFill className="hover:text-[#E1306C]" />
           </a>
         </div>
-        <span className="opacity-80">jensavagepiano@gmail.com</span>
+        <span className="sm:opacity-80 opacity-0">
+          jensavagepiano@gmail.com
+        </span>
       </div>
-      <span className="absolute bottom-0 right-10 opacity-80">2025</span>
+      <span className="absolute bottom-0 right-10 sm:opacity-80 opacity-0">
+        2025
+      </span>
     </div>
   );
 };

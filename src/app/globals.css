@@ -14,6 +14,21 @@
   font-weight: normal;
   font-style: normal;
 }
+@keyframes fadeHighlight {
+  0% {
+    background-color: #ffffff;
+  }
+  80% {
+    background-color: #8aa3b2;
+  }
+  100% {
+    background-color: #374151;
+  } /* Tailwind’s gray-800 */
+}
+
+.dot-button:not(.selected):hover {
+  animation: fadeHighlight 2.8s ease-out forwards;
+}
 
 :root {
   --background: #ffffff;
