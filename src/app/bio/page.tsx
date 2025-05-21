@@ -6,6 +6,16 @@ import "../globals.css";
 import Link from "next/link";
 import { FaInstagram, FaFacebook, FaYoutube, FaLinkedin } from "react-icons/fa";
 import { RiFolderMusicFill } from "react-icons/ri";
+import ImageCarousel from "../../components/ImageCarousel";
+
+
+  const pics = [
+    "/assets/bio/DSC07055-2.png",
+    "/assets/bio/JWan_1027_bw.jpg",
+    "/assets/bio/JWan_1059_bw.jpg",
+    "/assets/bio/JWan_2052_bw.jpg",
+    "/assets/bio/JWan_2068_bw.jpg"
+  ];
 
 const Home = () => {
   return (
@@ -61,19 +71,9 @@ const Home = () => {
             <span className="block sm:inline">Jennifer</span>
             <span className="block sm:inline">Savage</span>
           </h1>
-
-          <Image
-            src="/assets/DSC07055-2.png"
-            alt="Bio Image"
-            width={500}
-            height={500}
-            className="
-        relative mt-4
-        w-[90vw]    /* mobile: 90% of viewport */
-        sm:w-[600px] /* ≥640px: fixed 600px */
-        h-auto object-cover rounded-lg
-      "
-          />
+          <div className="flex justify-center">
+            <ImageCarousel images={pics} intervalMs={2500} />
+          </div>
         </div>
 
         {/* 2) Bio paragraphs */}

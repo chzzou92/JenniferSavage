@@ -1,0 +1,49 @@
+
+
+                <div
+                  className="
+    pt-2 px-2          /* mobile: tighter padding */
+    sm:pt-4 sm:px-4    /* ≥640px: your original padding */
+    z-10 bg-[#181818] bg-opacity-70 rounded-b-lg
+
+    text-sm            /* mobile: smaller text */
+    sm:text-base       /* ≥640px: back to normal */
+  "
+                >
+                  <div className="flex">
+                    <h1
+                      className="font-bold mr-2"
+                      style={{ fontFamily: "HelveticaNeueMedium" }}
+                    >
+                      Orchestra:
+                    </h1>
+                    <p>{selectedLocation.Orchestra}</p>
+                  </div>
+                  <div className="flex">
+                    <h1
+                      className="font-bold mr-2"
+                      style={{ fontFamily: "HelveticaNeueMedium" }}
+                    >
+                      Conductor:
+                    </h1>
+                    <p>{selectedLocation.Conductor}</p>
+                  </div>
+                  <div className="flex">
+                    <h1
+                      className="font-bold mr-2"
+                      style={{ fontFamily: "HelveticaNeueMedium" }}
+                    >
+                      Venue:
+                    </h1>
+                    <p>{selectedLocation.Venue}</p>
+                  </div>
+                  <div className="flex">
+                    <h1
+                      className="font-bold mr-2"
+                      style={{ fontFamily: "HelveticaNeueMedium" }}
+                    >
+                      Program Repertoire:
+                    </h1>
+                    <p>{selectedLocation.ProgramRepertoire}</p>
+                  </div>
+                </div>
