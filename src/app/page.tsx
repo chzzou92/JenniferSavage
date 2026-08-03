@@ -37,7 +37,7 @@ const Home = () => {
             Bio
           </Link>
           <Link href="/photos" className="opacity-70 hover:opacity-100">
-            Photos
+            Highlights
           </Link>
           <Link href="/press" className="opacity-70 hover:opacity-100">
             Press
@@ -52,7 +52,7 @@ const Home = () => {
         <div className="inset-0 flex flex-col items-center justify-center">
           <h1
             className="2xl:text-[130px] xl:text-[130px] md:text-[130px] sm:text-[130px] text-[90px]
-          font-bold leading-[1] fixed sm:bottom-[630px] bottom-[460px] 2xl:left-[590px] xl:left-[450px] lg:left-[300px] md:left-[160px] z-0 opacity-0 animate-slideUp"
+          font-bold leading-[1] fixed sm:bottom-[630px] bottom-[60vh] 2xl:left-[590px] xl:left-[450px] lg:left-[300px] md:left-[160px] z-0 opacity-0 animate-slideUp"
           >
             Jennifer
           </h1>
@@ -63,20 +63,20 @@ const Home = () => {
               alt="Jennifer Savage"
               width={650}
               height={1000}
-              className="object-contain w-[340px] sm:w-[450px] md:w-[500px] lg:w-[600px] xl:w[625px] 2xl:w-[650px] mr-10 md:mr-10 lg:mr-40 xl:mr-50 2xl:mr-60"
+              className="object-contain w-[85vw] sm:w-[450px] md:w-[500px] lg:w-[600px] xl:w[625px] 2xl:w-[650px] mr-10 md:mr-10 lg:mr-40 xl:mr-50 2xl:mr-60"
             />
           </div>
 
           <h1
             className="font-bold leading-[1] fixed 
           2xl:left-[900px] 2xl:bottom-[400px] xl:left-[750px] xl:bottom-[400px] lg:left-[620px] lg:bottom-[400px] sm:bottom-[300px]
-          2xl:text-[130px] xl:text-[130px] md:text-[130px] sm:text-[130px] text-[90px] bottom-[240px]
+          2xl:text-[130px] xl:text-[130px] md:text-[130px] sm:text-[130px] text-[90px] bottom-[28vh]
            z-50 opacity-0 animate-slideUp "
           >
             Savage
           </h1>
 
-          <div className="mt-4 absolute bottom-[420px] sm:bottom-[590px] 2xl:left-[580px] xl:left-[450px] lg:left-[300px] md:left-[170px] sm:left-[130px] left-[80px]">
+          <div className="mt-4 absolute bottom-[54vh] sm:bottom-[590px] 2xl:left-[580px] xl:left-[450px] lg:left-[300px] md:left-[170px] sm:left-[130px] left-[80px]">
             <div className="my-5 z-10">
               <HorizontalLine />
             </div>
@@ -91,7 +91,7 @@ const Home = () => {
       </div>
 
       {/* Footer */}
-      <div className="absolute bottom-5 left-10 flex justify-between w-[calc(100%-80px)]">
+      <div className="absolute bottom-6 left-10 flex justify-between w-[calc(100%-80px)]">
         <div className="flex gap-4">
           <a
             href="https://www.instagram.com/realjennifersavage/"
@@ -131,7 +131,7 @@ const Home = () => {
         </div>
         <span className="opacity-80">jensavagepiano@gmail.com</span>
       </div>
-      <span className="absolute bottom-0 right-10 opacity-80">2025</span>
+      <span className="absolute bottom-0 right-10 opacity-80">2026</span>
     </div>
   );
 };

@@ -24,14 +24,15 @@ export default function ImageCarousel({
   }, [images.length, intervalMs]);
 
   return (
-    <div className="relative mt-4 w-[90vw] sm:w-[600px] h-auto overflow-hidden rounded-lg">
+    // Fixed aspect ratio so cycling images never change the layout height
+    <div className="relative mt-4 w-[90vw] sm:w-[600px] aspect-[2/3] overflow-hidden rounded-lg">
       <Image
         key={images[idx]}
         src={images[idx]}
         alt={`Slide ${idx + 1}`}
-        width={500}
-        height={500}
-        className="object-cover w-full h-full transition-opacity duration-500"
+        fill
+        sizes="(max-width: 640px) 90vw, 600px"
+        className="object-contain transition-opacity duration-500"
       />
     </div>
   );

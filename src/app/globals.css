@@ -30,6 +30,30 @@
   animation: fadeHighlight 2.8s ease-out forwards;
 }
 
+/* Scrollable but with no visible scrollbar */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Page-level: hide both scrollbars and lock horizontal scrolling */
+html.no-page-scrollbar,
+html.no-page-scrollbar body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  overflow-x: hidden;
+  max-width: 100%;
+}
+html.no-page-scrollbar::-webkit-scrollbar,
+html.no-page-scrollbar body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none; /* Chrome, Safari, Opera */
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import NavLine from "@/components/NavLine";
 import HorizontalLine2 from "@/components/HorizontalLine2";
+import PressContent from "@/components/PressContent";
 
 type Location = {
   name: string;
@@ -83,6 +84,13 @@ export default function PhotosPage() {
     setTimeout(() => setFade(false), 150);
   };
 
+  // hide the page scrollbars / block horizontal scroll while on this page
+  useEffect(() => {
+    document.documentElement.classList.add("no-page-scrollbar");
+    return () =>
+      document.documentElement.classList.remove("no-page-scrollbar");
+  }, []);
+
   // every time selectedLocation changes, start a 2.5s cycle
   useEffect(() => {
     if (selectedLocation.photos.length < 2) return;
@@ -93,7 +101,7 @@ export default function PhotosPage() {
   }, [selectedLocation]);
 
   return (
-    <div className="relative h-screen w-screen bg-[#181818] text-white flex flex-col">
+    <div className="relative min-h-screen w-full max-w-full bg-[#181818] text-white flex flex-col overflow-x-hidden">
       {/* Navbar */}
       <div className="fixed top-0 w-full bg-[#181818] z-20">
         <nav className="flex items-center justify-evenly w-full h-full mt-2 text-sm px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-40 gap-2 sm:gap-4 md:gap-8 lg:gap-12 xl:gap-20 2xl:gap-32">
@@ -104,7 +112,7 @@ export default function PhotosPage() {
             Bio
           </Link>
           <Link href="/photos" className="opacity-70 hover:opacity-100">
-            [Photos]
+            [Highlights]
           </Link>
           <Link href="/press" className="opacity-70 hover:opacity-100">
             Press
@@ -114,10 +122,10 @@ export default function PhotosPage() {
       </div>
 
       {/* Main content */}
-      <div className="flex flex-col sm:flex-row h-screen w-full pt-10">
+      <div className="flex flex-col sm:flex-row min-h-[78vh] w-full pt-14">
         {/* Image & details */}
-        <div className="w-full sm:w-3/5 sm:h-full flex flex-col items-center justify-end pl-2">
-          <div className="sm:relative w-full h-full">
+        <div className="w-full sm:w-3/5 flex flex-col items-center justify-start pl-2">
+          <div className="w-full">
             {/* Date + Top link + underline */}
             <div className="w-full relative text-white text-sm px-4 mt-10 my-5">
               <div className="flex justify-between items-center">
@@ -136,20 +144,22 @@ export default function PhotosPage() {
             {locations.map((loc) => (
               <div
                 key={loc.name}
-                className="sm:absolute w-full h-full px-4"
+                className="w-full px-4"
                 style={{ display: loc === selectedLocation ? "block" : "none" }}
               >
-                <Image
-                  src={selectedLocation.photos[photoIndex]}
-                  alt={`${loc.name} slide ${photoIndex + 1}`}
-                  layout="responsive"
-                  width={1920}
-                  height={500}
-                  className={
-                    `sm:top-0 sm:left-0 w-full h-full object-fill rounded-lg transition-opacity duration-300 ` +
-                    (fade ? "opacity-0" : "opacity-100")
-                  }
-                />
+                {/* Fixed-height frame so every photo occupies the same space */}
+                <div className="relative w-full h-[30vh] sm:h-[55vh] overflow-hidden rounded-lg bg-[#181818]">
+                  <Image
+                    src={selectedLocation.photos[photoIndex]}
+                    alt={`${loc.name} slide ${photoIndex + 1}`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 60vw"
+                    className={
+                      `object-cover object-center transition-opacity duration-300 ` +
+                      (fade ? "opacity-0" : "opacity-100")
+                    }
+                  />
+                </div>
 
                 {/* Bottom info box */}
                 <div className="pt-2 px-2 sm:pt-4 sm:px-4 z-10 bg-[#181818] bg-opacity-70 rounded-b-lg text-sm sm:text-base">
@@ -215,15 +225,20 @@ export default function PhotosPage() {
         </div>
       </div>
 
+      {/* Press section */}
+      <div className="w-full flex items-center justify-center pt-0 pb-16">
+        <PressContent />
+      </div>
+
       {/* Footer */}
-      <div className="absolute bottom-5 left-10 flex justify-between w-[calc(100%-80px)]">
+      <div className="absolute bottom-6 left-10 flex justify-between w-[calc(100%-80px)]">
         <div className="flex gap-4" />
         <span className="sm:opacity-80 sm:text-[15px] text-[5px] opacity-0">
           jensavagepiano@gmail.com
         </span>
       </div>
       <span className="absolute bottom-0 right-10 sm:opacity-80 sm:text-[15px] opacity-0">
-        2025
+        2026
       </span>
     </div>
   );
