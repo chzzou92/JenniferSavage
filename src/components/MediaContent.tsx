@@ -49,6 +49,10 @@ const videos: Item[] = [
     src: "https://pub-3ab869f41a944b30b62d60600e1c0b62.r2.dev/20260709_JSV_Brahms.mov",
     file: true,
   },
+  {
+    name: "Liszt - Spanish Rhapsody",
+    src: "https://player.vimeo.com/video/1192571251?h=a4ac461790",
+  },
 ];
 
 const albums: Item[] = [

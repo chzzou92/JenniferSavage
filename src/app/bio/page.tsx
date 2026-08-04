@@ -50,7 +50,7 @@ const Home = () => {
             Highlights
           </Link>
           <Link href="/press" className="opacity-70 hover:opacity-100">
-            Press
+            Media
           </Link>
         </nav>
         <NavLine />
